@@ -1,0 +1,202 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos globales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px 10px;
+    padding: 20px;
+    margin: 1.5rem;
+}
+
+/* Estilos de la sección 1 */
+.section1 {
+    display: contents;
+}
+
+.img-perfil {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    width: 250px;
+    background-color: #020202;
+    overflow: hidden;
+}
+
+.img-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profesion {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profesion h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.profesion h2 {
+    color: #616161;
+}
+
+.separator {
+    width: 70%;
+    height: 1px;
+    background-color: #000;
+    margin: 10px auto;
+}
+
+.especialidad {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Estilos de la sección 2 */
+.section2 {
+    display: contents;
+}
+
+.education-work_experience {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    padding-top: 10px;
+}
+
+.img-dev {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    align-self: end;
+    justify-self: center;
+}
+
+.img-dev img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.my-courses {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+
+.my-courses h2 {
+    font-size: 20px;
+    margin-bottom: 3px;
+    margin-top: 0;
+}
+
+.my-courses > div {
+    margin-bottom: 10px;
+}
+
+.my-courses h5,
+.my-courses p {
+    color: #616161;
+}
+
+/* Ajustes para imágenes y textos */
+.especialidad h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.especialidad p {
+    font-size: 16px;
+    text-align: justify;
+    color: #616161;
+}
+
+.education,
+.experiencia-laboral,
+.my-courses {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.education-work_experience p,
+.education-work_experience li p {
+    color: #616161;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+/* Media queries para diseño responsive */
+
+@media screen and (max-width: 768px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .img-perfil {
+        grid-column: 1 / -1; /* Ocupa toda la fila */
+        grid-row: 1 / 2;
+        clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+        height: auto; /* Ajusta la altura automáticamente */
+        width: 100%;
+        max-width: 250px; /* Tamaño máximo */
+        margin: 0 auto; /* Centra horizontalmente */
+    }
+
+    .profesion {
+        grid-column: 1 / -1; /* Ocupa toda la fila */
+        grid-row: 2 / 3;
+    }
+
+    .especialidad {
+        grid-column: 1 / -1; /* Ocupa toda la fila */
+        grid-row: 3 / 4;
+    }
+
+    .education-work_experience,
+    .img-dev,
+    .my-courses {
+        grid-column: 1 / -1; /* Ocupa toda la fila */
+        grid-row: auto; /* Deja que fluya naturalmente */
+        margin-top: 20px; /* Espacio entre secciones */
+    }
+
+    .img-dev {
+        align-self: center; /* Centra verticalmente */
+    }
+}
