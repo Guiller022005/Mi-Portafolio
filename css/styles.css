@@ -1,64 +1,52 @@
-* {
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* Estilos globales */
 body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #1a237e, #0288d1);
 }
 
 .main {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 20px 10px;
     padding: 20px;
     margin: 1.5rem;
 }
 
 /* Estilos de la sección 1 */
 .section1 {
-    display: contents;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alinea a la izquierda */
+    align-items: center;
 }
 
 .img-perfil {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 250px;
-    width: 250px;
+    position: relative;
+    clip-path: polygon(30% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%); /* Polígono ajustado */
+    height: 80vh; /* Ajusta la altura */
+    width: 40%; /* Ajusta el ancho */
     background-color: #020202;
     overflow: hidden;
 }
 
 .img-perfil img {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: 100%; /* Ajusta la altura */
     object-fit: cover;
 }
 
 .profesion {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 50%; /* Ajusta el ancho */
+    text-align: center;
+    padding: 20px;
 }
 
 .profesion h1 {
-    font-size: 3rem;
-    text-align: center;
-}
-
-.profesion h2 {
-    color: #616161;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .separator {
@@ -68,135 +56,83 @@ body, html {
     margin: 10px auto;
 }
 
-.especialidad {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 /* Estilos de la sección 2 */
 .section2 {
-    display: contents;
+    text-align: center;
+    padding: 20px;
 }
 
-.education-work_experience {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    padding-top: 10px;
-}
-
-.img-dev {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    align-self: end;
-    justify-self: center;
+.education-work_experience,
+.img-dev,
+.my-courses {
+    max-width: 800px;
+    margin: 0 auto 20px; /* Centra y añade espacio inferior */
 }
 
 .img-dev img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
 }
 
 .my-courses {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 10px;
-}
-
-.my-courses h2 {
-    font-size: 20px;
-    margin-bottom: 3px;
-    margin-top: 0;
+    text-align: left; /* Alinea a la izquierda en dispositivos grandes */
 }
 
 .my-courses > div {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.my-courses h5,
-.my-courses p {
-    color: #616161;
+.my-courses h5, p{
+    color:#dbd4d4;
 }
 
-/* Ajustes para imágenes y textos */
+/* Estilos para el texto "About me" */
+.especialidad {
+    max-width: 800px; /* Limitar el ancho del texto */
+    margin: 0 auto 20px; /* Centrar horizontalmente y añadir espacio inferior */
+    padding: 20px;
+    color: #fff; /* Color de texto blanco */
+}
+
+
 .especialidad h2 {
-    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem; /* Tamaño del título */
     margin-bottom: 10px;
+    color: #000;
 }
 
 .especialidad p {
-    font-size: 16px;
-    text-align: justify;
-    color: #616161;
+    font-size: 1.2rem; /* Tamaño del párrafo */
+    text-align: center; /* Alineación centrada */
+    max-width: 800px; /* Limitar el ancho del texto */
+    margin: 0 auto; /* Centrar horizontalmente */
+    padding: 0 20px; /* Añadir relleno lateral */
+    line-height: 1.6; /* Altura de línea aumentada para mejorar la legibilidad */
+    color: #dbd4d4;
 }
 
-.education,
-.experiencia-laboral,
-.my-courses {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-}
 
-.education-work_experience p,
-.education-work_experience li p {
-    color: #616161;
-}
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
     margin: 0;
 }
 
-ul {
-    padding: 0;
-}
-
 /* Media queries para diseño responsive */
-
 @media screen and (max-width: 768px) {
-    .main {
-        grid-template-columns: 1fr;
-    }
-
     .img-perfil {
-        grid-column: 1 / -1; /* Ocupa toda la fila */
-        grid-row: 1 / 2;
-        clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+        width: 100%; /* Ocupa toda la pantalla en dispositivos pequeños */
         height: auto; /* Ajusta la altura automáticamente */
-        width: 100%;
-        max-width: 250px; /* Tamaño máximo */
-        margin: 0 auto; /* Centra horizontalmente */
+        clip-path: none; /* Elimina el polígono en dispositivos pequeños */
     }
 
     .profesion {
-        grid-column: 1 / -1; /* Ocupa toda la fila */
-        grid-row: 2 / 3;
+        width: 100%; /* Ocupa toda la pantalla en dispositivos pequeños */
     }
+}
 
-    .especialidad {
-        grid-column: 1 / -1; /* Ocupa toda la fila */
-        grid-row: 3 / 4;
-    }
-
-    .education-work_experience,
-    .img-dev,
-    .my-courses {
-        grid-column: 1 / -1; /* Ocupa toda la fila */
-        grid-row: auto; /* Deja que fluya naturalmente */
-        margin-top: 20px; /* Espacio entre secciones */
-    }
-
-    .img-dev {
-        align-self: center; /* Centra verticalmente */
-    }
+.education-work_experience p {
+    color: #dbd4d4;
 }
