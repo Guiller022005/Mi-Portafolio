@@ -3,7 +3,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #1a237e, #0288d1);
+    background: linear-gradient(to bottom right, #000000, #1a237e, #0288d1);
 }
 
 .main {
@@ -21,10 +21,11 @@ body, html {
 
 .img-perfil {
     position: relative;
-    clip-path: polygon(30% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%); /* Polígono ajustado */
+    
     height: 80vh; /* Ajusta la altura */
     width: 40%; /* Ajusta el ancho */
     background-color: #020202;
+    border-radius: 80%;
     overflow: hidden;
 }
 
@@ -92,6 +93,7 @@ body, html {
     max-width: 800px; /* Limitar el ancho del texto */
     margin: 0 auto 20px; /* Centrar horizontalmente y añadir espacio inferior */
     padding: 20px;
+    margin-top: 15vh;
     color: #fff; /* Color de texto blanco */
 }
 
@@ -122,16 +124,38 @@ h1, h2, h3, h4, h5 {
 
 /* Media queries para diseño responsive */
 @media screen and (max-width: 768px) {
+    .section1 {
+        flex-direction: column; /* Cambia a disposición en columna */
+        align-items: center; /* Centra los elementos */
+        text-align: center; /* Centra el texto */
+    }
+
     .img-perfil {
-        width: 100%; /* Ocupa toda la pantalla en dispositivos pequeños */
+        margin-top: 10vh;
+        width: 80%; /* Ajusta el ancho en dispositivos móviles */
         height: auto; /* Ajusta la altura automáticamente */
-        clip-path: none; /* Elimina el polígono en dispositivos pequeños */
+    }
+
+    .img-perfil img {
+        width: 100%; /* Ajusta el ancho de la imagen */
+        height: auto; /* Ajusta la altura automáticamente */
+        transform: none; /* Elimina la transformación para ajustar la imagen */
+        position: static; /* Cambia la posición a estática */
     }
 
     .profesion {
+        margin-top: 15vh;
         width: 100%; /* Ocupa toda la pantalla en dispositivos pequeños */
+        padding: 0 10px; /* Añade padding para evitar que se pegue a la derecha */
+        color: #dbd4d4;
+    }
+
+    .especialidad {
+        margin-top: 40vh;
+        padding: 0 10px; /* Añade padding para evitar que se pegue a la derecha */
     }
 }
+
 
 .education-work_experience p {
     color: #dbd4d4;
