@@ -5,14 +5,18 @@
         <h1>José Guillermo Paúl Díaz</h1>
         <ul>
           <li v-for="item in navItems" :key="item">
-            <a href="#">{{ item }}</a>
+            <!-- Asigna dinámicamente el href según el nombre del item -->
+            <a :href="item === 'Sobre mí' ? '#profile' : item === 'Habilidades' ? '#skills' : item === 'Proyectos' ? '#projects' : item === 'Contacto' ? '#contact' : '#'">
+              {{ item }}
+            </a>
           </li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <section class="profile">
+      <!-- Sección Sobre mí -->
+      <section id="profile" class="profile">
         <div class="profile-image">
           <img src="/foto.png?height=400&width=400" alt="Tu Foto">
         </div>
@@ -23,7 +27,8 @@
         </div>
       </section>
 
-      <section class="skills">
+      <!-- Sección Habilidades -->
+      <section id="skills" class="skills">
         <h3>Habilidades y Tecnologías</h3>
         <div class="skills-grid">
           <div v-for="skill in skills" :key="skill" class="skill-item">
@@ -32,7 +37,8 @@
         </div>
       </section>
 
-      <section class="projects">
+      <!-- Sección Proyectos -->
+      <section id="projects" class="projects">
         <h3>Proyectos Destacados</h3>
         <div class="projects-grid">
           <div v-for="project in projects" :key="project.title" class="project-item">
@@ -46,11 +52,12 @@
         </div>
       </section>
 
+      <!-- Sección Contacto -->
       <section id="contact" class="contact">
         <h3>Contacto</h3>
         <div class="social-icons">
           <a v-for="social in socials" :key="social.name" :href="social.url" target="_blank" rel="noopener noreferrer">
-            <component :is="social.icon" />
+            <component :is="social.icon" width="40px" height="40px"/>
           </a>
         </div>
         <p>pauldiazjoseguillermo@gmail.com | +57 317 800 1452</p>
@@ -85,6 +92,11 @@ const projects = ref([
     title: 'App de Gestión de Tareas',
     description: 'Una aplicación web responsiva para la organización eficiente de tareas y colaboración en equipo.',
     image: '/foto.png?height=200&width=300'
+  },
+  {
+    title: 'Plataforma de Cine',
+    description: 'Una aplicación web para visualizar el catálogo de películas en cartelera y gestionar reservas.',
+    image: '/foto.png?height=200&width=300'
   }
 ]);
 
@@ -96,7 +108,7 @@ const socials = ref([
 </script>
 
 <style scoped>
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -215,12 +227,14 @@ h3 {
 }
 
 .skills-grid {
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
 }
 
 .skill-item {
   background-color: #2d3748;
-  padding: 1rem;
+  padding: 3rem;
   border-radius: 0.5rem;
   text-align: center;
   transition: all 0.3s;
