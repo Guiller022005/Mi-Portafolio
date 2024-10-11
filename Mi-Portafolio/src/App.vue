@@ -193,6 +193,7 @@ main {
 
 .profile-content p {
   font-size: 1.25rem;
+  text-align: justify;
   margin-bottom: 1.5rem;
 }
 
