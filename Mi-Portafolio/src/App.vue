@@ -31,14 +31,37 @@
       <section id="skills" class="skills">
         <h3>Skills</h3>
         <div class="skills-grid">
-          <div v-for="(skill, index) in skills" :key="skill.name" class="skill-item" 
-          :class="{'half-width': index >= skills.length - 2}" @mouseover="flipCard(skill)" 
-          @mouseleave="flipCard(skill)">
+          <div v-for="(skill, index) in skills" :key="skill.name" 
+            class="skill-item" 
+            :class="{'half-width': index >= skills.length - 2}" 
+            @mouseover="flipCard(skill)" 
+            @mouseleave="flipCard(skill)">
           <div class="card" :class="{ flipped: skill.flipped }">
             <div class="card-front">{{ skill.name }}</div>
             <div class="card-back"><p>{{ skill.info }}</p></div>
           </div>
         </div>
+
+        </div>
+      </section>
+
+      <section id="soft-skills" class="soft-skills">
+        <h3>Soft Skills</h3>
+        <div class="pyramid">
+          <div class="level level-1">
+            <div class="pyramid-item">Liderazgo</div>
+          </div>
+          <div class="level level-2">
+            <div class="pyramid-item">Proactividad</div>
+            <div class="pyramid-item">Resolución de Problemas</div>
+          </div>
+          <div class="level level-3">
+            <div class="pyramid-item">Trabajo en equipo</div>
+            <div class="pyramid-item">Comunicación efectiva</div>
+            <div class="pyramid-item">Creatividad</div>
+            <div class="pyramid-item">Adaptabilidad</div>
+            <div class="pyramid-item">Empatía</div>
+          </div>
         </div>
       </section>
 
@@ -63,6 +86,9 @@
         <div class="social-icons">
           <a v-for="social in socials" :key="social.name" :href="social.url" target="_blank" rel="noopener noreferrer">
             <component :is="social.icon" width="40px" height="40px"/>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pauldiazjoseguillermo@gmail.com&su=Contacto%20desde%20tu%20portafolio&body=Escribe%20tu%20mensaje%20aquí" target="_blank" rel="noopener noreferrer">
+            <img src="./assets/email.svg" alt="Correo" width="40px" height="40px"/>
           </a>
         </div>
         <p>pauldiazjoseguillermo@gmail.com | +57 317 800 1452</p>
@@ -115,7 +141,7 @@ const projects = ref([
 const socials = ref([
   { name: 'GitHub', icon: GithubIcon, url: 'https://github.com/Guiller022005' },
   { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://linkedin.com/in/josé-guillermo-paúl-díaz' },
-  { name: 'Instagram', icon: InstagramIcon, url: 'https://instagram.com/pauldiazjoseguillermo' }
+  { name: 'Instagram', icon: InstagramIcon, url: 'https://instagram.com/pauldiazjoseguillermo' },
 ]);
 
 const flipCard = (skill) => {
@@ -133,7 +159,7 @@ const flipCard = (skill) => {
 .portfolio {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom right, #0c1445, #1a237e, #0c1445);
+  background: linear-gradient(to bottom right, #000203, #006DA3, #5CC9FF, #00527A);
   color: #f7fafc;
   font-family: Arial, sans-serif;
   display: flex;
@@ -160,6 +186,7 @@ nav ul {
   display: flex;
   gap: 4rem;
   margin-left: 40px;
+  list-style-type: none; /* Quitar los puntos */
 }
 
 nav a {
@@ -191,7 +218,7 @@ main {
   height: 20rem;
   object-fit: contain;
   border-radius: 0.5rem;
-  border: 4px solid #2b6cb0;
+  border: 4px solid #006DA3;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   background-color: #2f3339;
 }
@@ -214,7 +241,7 @@ main {
 }
 
 .cta-button {
-  background-color: #2b6cb0;
+  background-color: #0D456E;
   color: white;
   font-weight: bold;
   padding: 1rem 2rem;
@@ -250,9 +277,16 @@ h3 {
 }
 
 .skill-item.half-width {
-  grid-column: span 2; /* Ocupa 2 columnas en lugar de 1 */
+  grid-column: span 2; /* Esto hace que ocupen dos columnas */
 }
 
+.skill-item:nth-last-child(2) {
+  grid-column: 2; /* Segunda columna */
+}
+
+.skill-item:nth-last-child(1) {
+  grid-column: 3; /* Tercera columna */
+}
 
 .skill-item {
     background-color: #2d3748;
@@ -371,12 +405,12 @@ h3 {
 }
 
 .social-icons a {
-  color: #a0aec0;
+  color: #00527A;
   transition: color 0.3s;
 }
 
 .social-icons a:hover {
-  color: #63b3ed;
+  color: #1573B7;
 }
 
 footer {
@@ -402,4 +436,58 @@ footer {
     text-align: left;
   }
 }
+
+.soft-skills {
+    margin-bottom: 4rem;
+  }
+
+  .soft-skills {
+  margin-bottom: 4rem;
+}
+
+.pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.level {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.pyramid-item {
+  background-color: #2d3748;
+  color: #f7fafc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px; /* Puedes ajustar este valor según el tamaño deseado */
+  min-height: 50px; /* Altura mínima para hacer que todos tengan una apariencia uniforme */
+}
+
+/* Ajusta los niveles con más elementos */
+.level-1 .pyramid-item {
+  width: 200px; /* El nivel superior con un solo elemento más ancho */
+  height: 80PX;
+  padding: 1.5vw;
+}
+
+.level-2 .pyramid-item {
+  width: 200px;
+  height: 80PX;
+  padding: 1.5vw;
+}
+
+.level-3 .pyramid-item {
+  width:  200px;
+  height: 80PX;
+  padding: 1.5vw;
+}
+
 </style>
