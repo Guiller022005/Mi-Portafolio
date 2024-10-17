@@ -27,13 +27,18 @@
         </div>
       </section>
 
-      <!-- Sección Habilidades -->
+       <!-- Sección Habilidades -->
       <section id="skills" class="skills">
-        <h3>Habilidades y Tecnologías</h3>
+        <h3>Skills</h3>
         <div class="skills-grid">
-          <div v-for="skill in skills" :key="skill" class="skill-item">
-            {{ skill }}
+          <div v-for="(skill, index) in skills" :key="skill.name" class="skill-item" 
+          :class="{'half-width': index >= skills.length - 2}" @mouseover="flipCard(skill)" 
+          @mouseleave="flipCard(skill)">
+          <div class="card" :class="{ flipped: skill.flipped }">
+            <div class="card-front">{{ skill.name }}</div>
+            <div class="card-back"><p>{{ skill.info }}</p></div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -77,9 +82,16 @@ import { GithubIcon, LinkedinIcon, InstagramIcon } from 'lucide-vue-next';
 const navItems = ref(['Sobre mí', 'Habilidades', 'Proyectos', 'Contacto']);
 
 const skills = ref([
-  'JavaScript', 'Vue.js', 'React', 'Node.js',
-  'Python', 'Django', 'PostgreSQL', 'MongoDB',
-  'Docker', 'AWS', 'Git', 'APIs RESTful'
+  { name: 'Node.js', info: 'Crea aplicaciones rápidas en servidores.', flipped: false },
+  { name: 'Express', info: 'Facilita la creación de sitios web y servicios.', flipped: false },
+  { name: 'Vue.js', info: 'Hace las páginas web más rápidas e interactivas.', flipped: false },
+  { name: 'JavaScript', info: 'Da vida a las páginas web con interacción.', flipped: false },
+  { name: 'C++', info: 'Crea programas rápidos como videojuegos.', flipped: false },
+  { name: 'MySQL', info: 'Almacena y organiza información en bases de datos.', flipped: false },
+  { name: 'MongoDB', info: 'Guarda grandes volúmenes de datos de manera flexible.', flipped: false },
+  { name: 'Python', info: 'Lenguaje fácil para múltiples tareas, como análisis de datos.', flipped: false },
+  { name: 'APIs RESTful', info: 'Permiten que aplicaciones se comuniquen entre sí.', flipped: false },
+  { name: 'Sitios web responsive', info: 'Adaptan un sitio para verse bien en cualquier dispositivo.', flipped: false },
 ]);
 
 const projects = ref([
@@ -105,6 +117,10 @@ const socials = ref([
   { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://linkedin.com/in/josé-guillermo-paúl-díaz' },
   { name: 'Instagram', icon: InstagramIcon, url: 'https://instagram.com/pauldiazjoseguillermo' }
 ]);
+
+const flipCard = (skill) => {
+  skill.flipped = !skill.flipped;
+};
 </script>
 
 <style scoped>
@@ -171,8 +187,8 @@ main {
 }
 
 .profile-image img {
-  width: 16rem;
-  height: 16rem;
+  width: 20rem;
+  height: 20rem;
   object-fit: contain;
   border-radius: 0.5rem;
   border: 4px solid #2b6cb0;
@@ -201,8 +217,8 @@ main {
   background-color: #2b6cb0;
   color: white;
   font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
   text-decoration: none;
   transition: background-color 0.3s;
 }
@@ -212,11 +228,11 @@ main {
 }
 
 .skills, .projects, .contact {
-  margin-bottom: 4rem;
+    margin-bottom: 4rem;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -233,17 +249,73 @@ h3 {
   grid-template-columns: repeat(4, 1fr); /* 4 columnas */
 }
 
+.skill-item.half-width {
+  grid-column: span 2; /* Ocupa 2 columnas en lugar de 1 */
+}
+
+
 .skill-item {
-  background-color: #2d3748;
-  padding: 3rem;
-  border-radius: 0.5rem;
-  text-align: center;
-  transition: all 0.3s;
+    background-color: #2d3748;
+    padding: 6rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: transform 0.6s, background-color 0.3s; /* Animación suave */
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .skill-item:hover {
+    background-color: #4a5568;
+    transform: rotateY(180deg); /* Efecto de giro al pasar el mouse */
+}
+
+.skill-item::before {
+    content: attr(data-front); /* Contenido del frente de la carta */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la parte trasera durante el giro */
+}
+
+ .skill-item::after {
+    content: attr(data-back); /* Contenido de la parte trasera */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg); /* Parte trasera de la carta */
+}
+
+.card {
+  width: 100%;
+  height: 100px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2d3748;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #f7fafc;
+}
+
+.card-front {
+  background-color: #2d3748;
+}
+
+.card-back {
   background-color: #4a5568;
-  transform: scale(1.05);
+  transform: rotateY(180deg);
 }
 
 .projects-grid {
@@ -322,7 +394,7 @@ footer {
 
   .profile-image {
     width: 50%;
-    margin-right: 2rem;
+    margin-right: 3rem;
   }
 
   .profile-content {
