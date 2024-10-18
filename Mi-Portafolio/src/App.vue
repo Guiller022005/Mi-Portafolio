@@ -159,7 +159,7 @@ const flipCard = (skill) => {
 .portfolio {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom right, #000203, #006DA3, #5CC9FF, #00527A);
+  background: linear-gradient(to bottom right, #000203, #006DA3, #5CC9FF, #000203);
   color: #f7fafc;
   font-family: Arial, sans-serif;
   display: flex;
@@ -168,6 +168,8 @@ const flipCard = (skill) => {
 
 header {
   padding: 2rem 1rem;
+  z-index: 1000;
+  position: relative;
 }
 
 nav {
@@ -290,6 +292,7 @@ h3 {
 
 .skill-item {
     background-color: #2d3748;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Sombra suave */
     padding: 6rem;
     border-radius: 0.5rem;
     text-align: center;
