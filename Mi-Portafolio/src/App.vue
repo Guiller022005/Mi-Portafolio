@@ -156,44 +156,49 @@ const flipCard = (skill) => {
   box-sizing: border-box;
 }
 
-.portfolio {
-  width: 100%;
+html, body {
   height: 100%;
+}
+
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
   background: linear-gradient(to bottom right, #000203, #006DA3, #5CC9FF, #000203);
   color: #f7fafc;
   font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
 }
 
 header {
-  padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0; /* Asegura que el header comience desde el borde izquierdo */
+  right: 0; /* Asegura que el header llegue hasta el borde derecho */
+  width: 100%;
+  background-color: rgba(0, 2, 3, 0.8);
   z-index: 1000;
-  position: relative;
+  padding: 1rem 0;
 }
 
 nav {
   display: flex;
-  width: 100vw; 
-  justify-content: center;
-  gap: 20vw;
-}
-
-nav h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem; /* Ajusta el padding horizontal si es necesario */
 }
 
 nav ul {
   display: flex;
-  gap: 4rem;
-  margin-left: 40px;
-  list-style-type: none; /* Quitar los puntos */
+  gap: 2rem; /* Ajusta el espacio entre los enlaces del menú */
+  list-style-type: none;
 }
 
 nav a {
   color: #f7fafc;
   text-decoration: none;
+  font-size: 1rem;
   transition: color 0.3s;
 }
 
@@ -202,22 +207,23 @@ nav a:hover {
 }
 
 main {
-  flex-grow: 1; /* Hace que el main ocupe todo el espacio disponible */
-  max-width: 1200px;
-  margin: 0 auto;
+  flex: 1;
   padding: 3rem 1rem;
+  margin-top: 100px;
 }
+
 
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 4rem;
+  padding-left: 10vw;
 }
 
 .profile-image img {
-  width: 20rem;
-  height: 20rem;
+  width: 30rem;
+  height: 30rem;
   object-fit: contain;
   border-radius: 0.5rem;
   border: 4px solid #006DA3;
@@ -228,6 +234,7 @@ main {
 .profile-content {
   text-align: center;
   margin-top: 2rem;
+  margin-right: 3rem;
 }
 
 .profile-content h2 {
@@ -417,10 +424,13 @@ h3 {
 }
 
 footer {
-  margin-top: auto; /* Asegura que el footer se mantenga al final */
   background-color: #2d3748;
-  padding: 1rem;
+  padding: 1rem 0; /* Cambia el padding vertical si lo deseas */
   text-align: center;
+  left: 0; /* Asegura que el header comience desde el borde izquierdo */
+  right: 0; /* Asegura que el header llegue hasta el borde derecho */
+  bottom: 0;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
