@@ -27,23 +27,28 @@
         </div>
       </section>
 
-       <!-- Sección Habilidades -->
+       <!-- Seccion Habilidades -->
       <section id="skills" class="skills">
-        <h3>Skills</h3>
+        <h3>Habilidades</h3>
         <div class="skills-grid">
           <div v-for="(skill, index) in skills" :key="skill.name" 
-            class="skill-item" 
-            :class="{'half-width': index >= skills.length - 2}" 
-            @mouseover="flipCard(skill)" 
-            @mouseleave="flipCard(skill)">
-          <div class="card" :class="{ flipped: skill.flipped }">
-            <div class="card-front">{{ skill.name }}</div>
-            <div class="card-back"><p>{{ skill.info }}</p></div>
+              class="skill-item" 
+              :class="{'half-width': index >= skills.length - 2}" 
+              @mouseover="flipCard(skill)" 
+              @mouseleave="flipCard(skill)">
+            <div class="card" :class="{ flipped: skill.flipped }">
+              <div class="card-front">
+                <img :src="skill.image" alt="Imagen de {{ skill.name }}" class="skill-image">
+                <p>{{ skill.name }}</p>
+              </div>
+              <div class="card-back">
+                <p>{{ skill.info }}</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        </div>
       </section>
+
 
       <section id="soft-skills" class="soft-skills">
         <h3>Soft Skills</h3>
@@ -60,7 +65,6 @@
             <div class="pyramid-item">Comunicación efectiva</div>
             <div class="pyramid-item">Creatividad</div>
             <div class="pyramid-item">Adaptabilidad</div>
-            <div class="pyramid-item">Empatía</div>
           </div>
         </div>
       </section>
@@ -108,16 +112,18 @@ import { GithubIcon, LinkedinIcon, InstagramIcon } from 'lucide-vue-next';
 const navItems = ref(['Sobre mí', 'Habilidades', 'Proyectos', 'Contacto']);
 
 const skills = ref([
-  { name: 'Node.js', info: 'Crea aplicaciones rápidas en servidores.', flipped: false },
-  { name: 'Express', info: 'Facilita la creación de sitios web y servicios.', flipped: false },
-  { name: 'Vue.js', info: 'Hace las páginas web más rápidas e interactivas.', flipped: false },
-  { name: 'JavaScript', info: 'Da vida a las páginas web con interacción.', flipped: false },
-  { name: 'C++', info: 'Crea programas rápidos como videojuegos.', flipped: false },
-  { name: 'MySQL', info: 'Almacena y organiza información en bases de datos.', flipped: false },
-  { name: 'MongoDB', info: 'Guarda grandes volúmenes de datos de manera flexible.', flipped: false },
-  { name: 'Python', info: 'Lenguaje fácil para múltiples tareas, como análisis de datos.', flipped: false },
-  { name: 'APIs RESTful', info: 'Permiten que aplicaciones se comuniquen entre sí.', flipped: false },
-  { name: 'Sitios web responsive', info: 'Adaptan un sitio para verse bien en cualquier dispositivo.', flipped: false },
+  { image: '../src/assets/node.svg?height=200&width=300', name: 'Node.js', info: 'Crea aplicaciones rápidas en servidores.', flipped: false },
+  { image: '../src/assets/nodeExpress.svg?height=200&width=300', name: 'Express', info: 'Facilita la creación de sitios web y servicios.', flipped: false },
+  { image: '../src/assets/vue.svg?height=200&width=300', name: 'Vue.js', info: 'Hace las páginas web más rápidas e interactivas.', flipped: false },
+  { image: '../src/assets/react.svg?height=200&width=300', name: 'React.js', info: 'Hace las páginas web más rápidas e interactivas.', flipped: false },
+  { image: '../src/assets/javascript.svg?height=200&width=300', name: 'JavaScript', info: 'Da vida a las páginas web con interacción.', flipped: false },
+  { image: '../src/assets/c++.svg?height=200&width=300', name: 'C++', info: 'Crea programas rápidos como videojuegos.', flipped: false },
+  { image: '../src/assets/mysql.svg?height=200&width=300', name: 'MySQL', info: 'Almacena y organiza información en bases de datos.', flipped: false },
+  { image: '../src/assets/mongo.svg?height=200&width=300', name: 'MongoDB', info: 'Guarda grandes volúmenes de datos de manera flexible.', flipped: false },
+  { image: '../src/assets/python.svg?height=200&width=300', name: 'Python', info: 'Lenguaje fácil para múltiples tareas, como análisis de datos.', flipped: false },
+  { image: '../src/assets/api.svg?height=200&width=300', name: 'APIs RESTful', info: 'Permiten que aplicaciones se comuniquen entre sí.', flipped: false },
+  { image: '../src/assets/responsive.svg?height=200&width=300', name: 'Sitios web responsive', info: 'Adaptan un sitio para verse bien en cualquier dispositivo.', flipped: false },
+  { image: '../src/assets/docker.svg?height=200&width=300', name: 'Docker', info: 'Adaptan un sitio para verse bien en cualquier dispositivo.', flipped: false },
 ]);
 
 const projects = ref([
@@ -149,358 +155,3 @@ const flipCard = (skill) => {
 };
 </script>
 
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-}
-
-.portfolio {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
-  background: linear-gradient(to bottom right, #000203, #006DA3, #5CC9FF, #000203);
-  color: #f7fafc;
-  font-family: Arial, sans-serif;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0; /* Asegura que el header comience desde el borde izquierdo */
-  right: 0; /* Asegura que el header llegue hasta el borde derecho */
-  width: 100%;
-  background-color: rgba(0, 2, 3, 0.8);
-  z-index: 1000;
-  padding: 1rem 0;
-}
-
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 0 2rem; /* Ajusta el padding horizontal si es necesario */
-}
-
-nav ul {
-  display: flex;
-  gap: 2rem; /* Ajusta el espacio entre los enlaces del menú */
-  list-style-type: none;
-}
-
-nav a {
-  color: #f7fafc;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #63b3ed;
-}
-
-main {
-  flex: 1;
-  padding: 3rem 1rem;
-  margin-top: 100px;
-}
-
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 4rem;
-  padding-left: 10vw;
-}
-
-.profile-image img {
-  width: 30rem;
-  height: 30rem;
-  object-fit: contain;
-  border-radius: 0.5rem;
-  border: 4px solid #006DA3;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  background-color: #2f3339;
-}
-
-.profile-content {
-  text-align: center;
-  margin-top: 2rem;
-  margin-right: 3rem;
-}
-
-.profile-content h2 {
-  font-size: 2.25rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.profile-content p {
-  font-size: 1.25rem;
-  text-align: justify;
-  margin-bottom: 1.5rem;
-}
-
-.cta-button {
-  background-color: #0D456E;
-  color: white;
-  font-weight: bold;
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.cta-button:hover {
-  background-color: #2c5282;
-}
-
-.skills, .projects, .contact {
-    margin-bottom: 4rem;
-}
-
-h3 {
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.skills-grid, .projects-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.skills-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-}
-
-.skill-item.half-width {
-  grid-column: span 2; /* Esto hace que ocupen dos columnas */
-}
-
-.skill-item:nth-last-child(2) {
-  grid-column: 2; /* Segunda columna */
-}
-
-.skill-item:nth-last-child(1) {
-  grid-column: 3; /* Tercera columna */
-}
-
-.skill-item {
-    background-color: #2d3748;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Sombra suave */
-    padding: 6rem;
-    border-radius: 0.5rem;
-    text-align: center;
-    transition: transform 0.6s, background-color 0.3s; /* Animación suave */
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.skill-item:hover {
-    background-color: #4a5568;
-    transform: rotateY(180deg); /* Efecto de giro al pasar el mouse */
-}
-
-.skill-item::before {
-    content: attr(data-front); /* Contenido del frente de la carta */
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Oculta la parte trasera durante el giro */
-}
-
- .skill-item::after {
-    content: attr(data-back); /* Contenido de la parte trasera */
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transform: rotateY(180deg); /* Parte trasera de la carta */
-}
-
-.card {
-  width: 100%;
-  height: 100px;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #2d3748;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  color: #f7fafc;
-}
-
-.card-front {
-  background-color: #2d3748;
-}
-
-.card-back {
-  background-color: #4a5568;
-  transform: rotateY(180deg);
-}
-
-.projects-grid {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
-
-.project-item {
-  background-color: #2d3748;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-
-.project-item:hover {
-  background-color: #4a5568;
-  transform: scale(1.05);
-}
-
-.project-item img {
-  width: 100%;
-  height: 12rem;
-  object-fit: cover;
-}
-
-.project-content {
-  padding: 1rem;
-}
-
-.project-content h4 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.project-link {
-  color: #64b5f6;
-  text-decoration: none;
-}
-
-.project-link:hover {
-  color: #4299e1;
-}
-
-.contact {
-  text-align: center;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.social-icons a {
-  color: #00527A;
-  transition: color 0.3s;
-}
-
-.social-icons a:hover {
-  color: #1573B7;
-}
-
-footer {
-  background-color: #2d3748;
-  padding: 1rem 0; /* Cambia el padding vertical si lo deseas */
-  text-align: center;
-  left: 0; /* Asegura que el header comience desde el borde izquierdo */
-  right: 0; /* Asegura que el header llegue hasta el borde derecho */
-  bottom: 0;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .profile {
-    flex-direction: row;
-    text-align: left;
-  }
-
-  .profile-image {
-    width: 50%;
-    margin-right: 3rem;
-  }
-
-  .profile-content {
-    width: 50%;
-    text-align: left;
-  }
-}
-
-.soft-skills {
-    margin-bottom: 4rem;
-  }
-
-  .soft-skills {
-  margin-bottom: 4rem;
-}
-
-.pyramid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.level {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.pyramid-item {
-  background-color: #2d3748;
-  color: #f7fafc;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 150px; /* Puedes ajustar este valor según el tamaño deseado */
-  min-height: 50px; /* Altura mínima para hacer que todos tengan una apariencia uniforme */
-}
-
-/* Ajusta los niveles con más elementos */
-.level-1 .pyramid-item {
-  width: 200px; /* El nivel superior con un solo elemento más ancho */
-  height: 80PX;
-  padding: 1.5vw;
-}
-
-.level-2 .pyramid-item {
-  width: 200px;
-  height: 80PX;
-  padding: 1.5vw;
-}
-
-.level-3 .pyramid-item {
-  width:  200px;
-  height: 80PX;
-  padding: 1.5vw;
-}
-
-</style>
