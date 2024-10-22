@@ -29,7 +29,7 @@
 
        <!-- Seccion Habilidades -->
       <section id="skills" class="skills">
-        <h3>Habilidades</h3>
+        <h3>Skills</h3>
         <div class="skills-grid">
           <div v-for="(skill, index) in skills" :key="skill.name" 
               class="skill-item" 
@@ -78,7 +78,7 @@
             <div class="project-content">
               <h4>{{ project.title }}</h4>
               <p>{{ project.description }}</p>
-              <a href="#" class="project-link">Ver Proyecto →</a>
+               <a :href="project.url" class="project-link" target="_blank" rel="noopener noreferrer">Ver Proyecto →</a>
             </div>
           </div>
         </div>
@@ -130,17 +130,20 @@ const projects = ref([
   {
     title: 'Plataforma de E-commerce',
     description: 'Una solución full-stack de comercio electrónico con gestión de inventario en tiempo real.',
-    image: '/foto.png?height=200&width=300'
+    image: '../src/assets/ecomerce.png?height=200&width=300',
+    url: 'https://guiller022005.github.io/ecommerCampusM1/?id=aps',
   },
   {
-    title: 'App de Gestión de Tareas',
+    title: 'SpaceX',
     description: 'Una aplicación web responsiva para la organización eficiente de tareas y colaboración en equipo.',
-    image: '/foto.png?height=200&width=300'
+    image: '../src/assets/spaceX.png?height=200&width=300',
+    url: 'https://guiller022005.github.io/SpaceX/',
   },
   {
     title: 'Plataforma de Cine',
     description: 'Una aplicación web para visualizar el catálogo de películas en cartelera y gestionar reservas.',
-    image: '/foto.png?height=200&width=300'
+    image: '../src/assets/foodSite.png?height=200&width=300',
+    url: 'https://guiller022005.github.io/proyectoWeb/',
   }
 ]);
 
